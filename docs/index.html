@@ -18,6 +18,7 @@
 </head>
 <body>
 
+
 <!-- Barra de navegación -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">I+ Web</a>
@@ -121,14 +122,61 @@
             </textarea>
         </div>
         <!-- Botón de Enviar -->
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <!-- Consentiment RGPD -->
+<div class="form-group form-check">
+
+    <input
+        type="checkbox"
+        class="form-check-input"
+        id="acceptaPrivacitat"
+        required>
+
+    <label class="form-check-label" for="acceptaPrivacitat">
+        He llegit i accepto la
+        <a href="privacitat.html" target="_blank">
+            Política de Privacitat
+        </a>.
+    </label>
+
+</div>
+
+<!-- Informació bàsica de protecció de dades -->
+<small class="form-text text-muted mb-3">
+    Responsable: I+ Web S.A.
+    Finalitat: gestionar les consultes enviades mitjançant aquest formulari.
+    Les dades no seran cedides a tercers excepte obligació legal.
+    Podeu consultar més informació a la
+    <a href="privacitat.html" target="_blank">
+        Política de Privacitat
+    </a>.
+</small>
+
+<button type="submit" class="btn btn-primary">
+    Enviar
+</button>
     </form>
     <div id="resultado" class="mt-3"></div>
 </section>
 
-<!-- Pie de página -->
+<!-- Peu de pàgina -->
 <footer class="footer bg-dark text-white mt-5 p-4 text-center">
+
     <p>© 2025 I+ Web S.A. Tots els drets reservats.</p>
+
+    <p>
+        <a href="avis-legal.html" class="text-white">
+            Avís Legal
+        </a>
+        |
+        <a href="privacitat.html" class="text-white">
+            Política de Privacitat
+        </a>
+        |
+        <a href="cookies.html" class="text-white">
+            Política de Cookies
+        </a>
+    </p>
+
 </footer>
 
 <script>
@@ -160,6 +208,57 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Bàner de cookies -->
+<div id="cookieBanner"
+     style="position:fixed;
+            bottom:0;
+            left:0;
+            width:100%;
+            background:#343a40;
+            color:white;
+            padding:15px;
+            text-align:center;
+            z-index:9999;">
+
+    <p>
+        Aquesta web utilitza cookies pròpies i de tercers (Google Analytics
+        i Google Maps) per millorar l'experiència de navegació.
+        Podeu consultar més informació a la
+        <a href="cookies.html" style="color:#ffc107;">
+            Política de Cookies
+        </a>.
+    </p>
+
+    <button class="btn btn-success btn-sm"
+            onclick="acceptarCookies()">
+        Acceptar
+    </button>
+
+    <button class="btn btn-secondary btn-sm"
+            onclick="rebutjarCookies()">
+        Rebutjar
+    </button>
+
+</div>
+
+<script>
+function acceptarCookies() {
+    localStorage.setItem("cookiesAcceptades", "si");
+    document.getElementById("cookieBanner").style.display = "none";
+}
+
+function rebutjarCookies() {
+    localStorage.setItem("cookiesAcceptades", "no");
+    document.getElementById("cookieBanner").style.display = "none";
+}
+
+window.onload = function() {
+    if(localStorage.getItem("cookiesAcceptades")) {
+        document.getElementById("cookieBanner").style.display = "none";
+    }
+}
+</script>
 
 </body>
 
